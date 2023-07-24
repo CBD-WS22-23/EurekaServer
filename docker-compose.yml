@@ -3,8 +3,17 @@ version: "3.9"
 services:
   eureka:
     container_name: eurekaServer
+    expose:
+      - '8761'
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - '8084:8761'
+    networks:
+      - internal
+
+networks:
+  internal:
+    name: internal
+    external: true
